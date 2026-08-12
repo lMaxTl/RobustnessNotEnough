@@ -40,6 +40,12 @@ python -m pip install "git+https://github.com/fra31/auto-attack"
 python -m pip install --no-deps "git+https://github.com/RobustBench/robustbench"
 python -m pip install "timm==1.0.28" "gdown==5.1.0" geotorch torchdiffeq requests tqdm
 
+# Only possible once the nvidia-* wheels are installed, hence here and not
+# alongside the activate above.
+# shellcheck disable=SC1091
+source "$REPO/scripts/hpc/_bundled_cuda.sh"
+python -c "import torch; print('cuDNN', torch.backends.cudnn.version(), '| torch', torch.__version__)"
+
 echo
 echo "== environment (REPRO.md S1)"
 python -m src.repro | tee "$REPO/results/environment_horeka.txt"

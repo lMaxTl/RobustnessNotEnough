@@ -26,6 +26,8 @@ if [[ ! -f "$VENV/bin/activate" ]]; then
 fi
 # shellcheck disable=SC1091
 source "$VENV/bin/activate"
+# shellcheck disable=SC1091
+source "$REPO/scripts/hpc/_bundled_cuda.sh"
 
 # --- runtime environment ---------------------------------------------------
 # Compute nodes are treated as offline: every dataset and checkpoint is staged

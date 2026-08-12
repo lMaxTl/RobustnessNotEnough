@@ -115,7 +115,7 @@ python -m pytest tests/test_extract.py -q       # full attacker pipeline, synthe
 | Stage | Runs | spec.md §16 (A100) | Measured here (RTX 4060) |
 |---|---|---|---|
 | M1 cost model + tests | — | seconds | **0.15 s** (77 tests) |
-| Full test suite (214 tests) | — | — | **~2 min** once CIFAR-10 is cached |
+| Full test suite (234 tests) | — | — | **~2 min** once CIFAR-10 is cached |
 | Victim AA verification | 8 | ~6 h | not yet run |
 | E2 main sweep (n_eval=1000) | 192 | ~160 h | not yet run |
 | E2 final eval (n_eval=10000) | 48 | ~32 h | not yet run |
@@ -148,17 +148,14 @@ If constrained, cut the Q=5,000 cell and the `jbda` ablation first (spec.md §16
 | Dataset | Size | Needed for | Present here |
 |---|---|---|---|
 | CIFAR-10 (test + train) | 170 MB | every evaluation; the `cifar10_train` pool | **yes** (downloaded, ~45 min on this link) |
-| CIFAR-100 (train) | 169 MB | the **primary** query pool (§8.1) — E2, E2b, E2c, E4 | no — not yet downloaded |
+| CIFAR-100 (train) | 169 MB | the **primary** query pool (§8.1) — E2, E2b, E2c, E4 | **yes** (downloaded, 2,163 s) |
 | Tiny ImageNet-200 | 237 MB | secondary pool, E2b only | no |
 | RobustBench checkpoints | ~3 GB total | all victims | no — fetched into `models/` on first `load_victim` |
 
-CIFAR-10 is on disk. **CIFAR-100 is not, and the main sweep cannot run without it**: `cifar100` is
-the primary pool in §8.1. It downloads automatically on first use (~169 MB); at the ~65 kB/s
-observed on this link that is roughly 45 minutes. Fetch it deliberately when convenient:
-
-```bash
-python -c "from src.data import cifar100_train_images as f; print(f().shape)"
-```
+CIFAR-10 and CIFAR-100 are both on disk, so E2/E2b/E2c/E4 can start without a network. Verified
+after download: the pool is 50,000 uint8 images, and `sample_pool("cifar100", 1000)` returns
+float16 in [0,1]. Tiny ImageNet (E2b's secondary pool only) and the RobustBench checkpoints are
+still to be fetched.
 
 Set `RE_DATA_ROOT` to relocate datasets. Set `RE_NO_DOWNLOAD=1` to forbid all dataset fetching —
 anything missing then raises with instructions instead of pulling hundreds of MB mid-sweep. This

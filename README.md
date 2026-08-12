@@ -20,10 +20,11 @@ robust models are more extractable (spec.md §17, pitfall 10).
 | E2/E2b/E2c/E3/E4 experiment runs | **not run** — ~300 GPU-hours (spec.md §16). Run them with the commands below |
 | `results/*.jsonl`, figures, Table 1 | empty until the sweeps run |
 
-214 tests pass (`python -m pytest -q`, ~2 min), including the M1 acceptance tests, a
+234 tests pass (`python -m pytest -q`, ~2 min), including the M1 acceptance tests, a
 bit-identical-init determinism check, an end-to-end extraction against a synthetic victim, real
 AutoAttack and FAB-T runs at tiny budgets to validate the library wiring, the analysis estimators
-against synthetic records with a planted ground truth, and rendering of every figure.
+against synthetic records with a planted ground truth, rendering of every figure, and the
+grid/shard/resume logic the batch jobs depend on.
 
 No numbers in this repository were invented. Anything not yet measured is absent rather than
 estimated (spec.md §0, rule 1).
@@ -64,10 +65,10 @@ recorded in [REPRO.md](REPRO.md); nothing else in §15 is changed.
 
 ## Data
 
-CIFAR-10 is downloaded and cached in `data/`. **CIFAR-100 — the primary query pool (§8.1) — is
-not**, so the main sweep will fetch it (~169 MB) on first use. Fetch it deliberately with
-`python -c "from src.data import cifar100_train_images as f; print(f().shape)"`, or set
-`RE_NO_DOWNLOAD=1` to make any missing dataset raise instead of downloading.
+CIFAR-10 and CIFAR-100 (the primary query pool, §8.1) are downloaded and cached in `data/`, so the
+main sweep can start offline. Tiny ImageNet (E2b's secondary pool) and the RobustBench
+checkpoints are fetched on first use. Set `RE_NO_DOWNLOAD=1` to make any missing dataset raise
+instead of downloading.
 
 ## Run
 

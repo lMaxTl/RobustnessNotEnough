@@ -16,6 +16,8 @@ cd "$REPO"
 VENV="${RE_VENV:-$REPO/.venv-horeka}"
 # shellcheck disable=SC1091
 source "$VENV/bin/activate"
+# shellcheck disable=SC1091
+source "$REPO/scripts/hpc/_bundled_cuda.sh"
 
 export RE_DATA_ROOT="${RE_DATA_ROOT:-$REPO/data}"
 export RE_NO_DOWNLOAD=0          # this script is the one place downloads happen

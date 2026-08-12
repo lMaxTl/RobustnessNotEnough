@@ -16,6 +16,8 @@ REPO="${RE_REPO:-$PWD}"
 cd "$REPO"
 # shellcheck disable=SC1091
 source "${RE_VENV:-$REPO/.venv-horeka}/bin/activate"
+# shellcheck disable=SC1091
+source "$REPO/scripts/hpc/_bundled_cuda.sh"
 export RE_NO_DOWNLOAD=1
 
 echo "=== queue ==="

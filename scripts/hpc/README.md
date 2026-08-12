@@ -144,6 +144,38 @@ Five additive changes; defaults are unchanged, and all 214 tests still pass.
 | `scripts/verify_victims.py` | tolerate victims with no leaderboard entry | it raised `KeyError` on the locally trained watermarked victim, which E4b has to verify |
 | `scripts/hpc/*` | new | this directory |
 
+## Troubleshooting
+
+**`RuntimeError: cuDNN version incompatibility: PyTorch was compiled against
+(9, 10, 2) but found runtime version (9, 5, 1)`**
+
+HoreKa's default environment puts a system cuDNN on `LD_LIBRARY_PATH`, which the
+dynamic loader searches *before* the RUNPATH pointing at the copy the torch
+wheel ships — so torch loads the wrong one. `sbatch` exports the submitting
+environment by default, so this reaches compute nodes too, not just the login
+node.
+
+`_bundled_cuda.sh` fixes it by putting the wheels' own NVIDIA libraries first,
+and every script here sources it after activating the venv. Nothing to do but
+pick up the change and re-run:
+
+```bash
+bash scripts/hpc/00_setup_env.sh          # pip steps are already satisfied; ~1 min
+```
+
+Check it by hand at any time:
+
+```bash
+source .venv-horeka/bin/activate
+source scripts/hpc/_bundled_cuda.sh
+python -c "import torch; print(torch.backends.cudnn.version())"   # 91002
+```
+
+If it somehow persists, something is putting a cuDNN ahead of the venv's:
+`module list` to see what your login shell loads, then `module purge` before
+submitting. Nothing in this project needs a module — `python3.11` is a system
+binary and the torch wheels are self-contained.
+
 ## HoreKa specifics worth knowing
 
 - `--account` is not set in the scripts; pass `RE_ACCOUNT=<project>` to
