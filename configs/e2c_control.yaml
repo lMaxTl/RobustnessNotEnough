@@ -1,0 +1,35 @@
+# E2c - temperature-matched control (spec.md S9.4, S13.3)
+#
+# THE most important control in the paper. Without it a reviewer will argue the
+# effect is label smoothing: robust models produce higher-entropy posteriors,
+# and that alone could make distillation easier.
+#
+# `mode: temperature_control` means the listed victims are used only as entropy
+# *targets*: for each one, `Standard`'s logits are divided by the temperature T
+# that matches its mean predictive entropy on the query pool, and the extraction
+# runs against that scaled `Standard`. Records are written with
+# victim_name="Standard_T{T}" and is_control=true.
+#
+# 7 robust victims x 3 seeds = 21 runs.
+name: e2c_control
+mode: temperature_control
+device: cuda
+epochs: 100
+
+blocks:
+  - name: control
+    victims:
+      - Carmon2019Unlabeled
+      - Gowal2021Improving_28_10_ddpm_100m
+      - Wang2023Better_WRN-28-10
+      - Wang2023Better_WRN-70-16
+      - Peng2023Robust
+      - Bartoldson2024Adversarial_WRN-82-8
+      - Bartoldson2024Adversarial_WRN-94-16
+    attacks: [best]
+    pools: [cifar100]
+    budgets: [50000]
+    students: [resnet18_cifar]
+    seeds: [0, 1, 2]
+    defenses: [none]
+    n_eval: [1000]

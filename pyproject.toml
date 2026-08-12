@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robustness-economics"
+version = "0.1.0"
+description = "Extraction economics of adversarially robust CIFAR-10 classifiers"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.1",
+    "torchvision",
+    "numpy",
+    "scipy",
+    "pandas",
+    "matplotlib",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+# Installed from git; kept out of the hard dependency list so that the
+# GPU-free modules (costmodel, analysis) install without them.
+gpu = [
+    "robustbench @ git+https://github.com/RobustBench/robustbench@v1.1",
+    "autoattack @ git+https://github.com/fra31/auto-attack",
+]
+dev = ["pytest"]
+
+[tool.setuptools]
+package-dir = { "robustness_economics" = "src" }
+packages = ["robustness_economics"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

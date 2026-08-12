@@ -1,0 +1,29 @@
+# E2 - main sweep (spec.md S13.1)
+# 8 victims x {random, best} x 4 budgets x 3 seeds = 192 runs.
+# The sweep is evaluated at n_eval=1000; the Q=200,000 cell is additionally
+# evaluated at n_eval=10000 for the paper (48 extra records, same students -
+# re-evaluation only, never re-training).
+name: e2_main
+device: cuda
+epochs: 100
+
+blocks:
+  - name: sweep
+    victims: all
+    attacks: [random, best]
+    pools: [cifar100]
+    budgets: [5000, 20000, 50000]
+    students: [resnet18_cifar]
+    seeds: [0, 1, 2]
+    defenses: [none]
+    n_eval: [1000]
+
+  - name: sweep_final
+    victims: all
+    attacks: [random, best]
+    pools: [cifar100]
+    budgets: [200000]
+    students: [resnet18_cifar]
+    seeds: [0, 1, 2]
+    defenses: [none]
+    n_eval: [1000, 10000]

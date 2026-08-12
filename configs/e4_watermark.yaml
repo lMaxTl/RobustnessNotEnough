@@ -1,0 +1,17 @@
+# E4b - watermark survival (spec.md S11.3)
+# Requires the backdoored TRADES victim from scripts/train_watermark_victim.py
+# (the only adversarial-training run in the project, ~8 GPU-hours).
+name: e4_watermark
+device: cuda
+epochs: 100
+
+blocks:
+  - name: watermark
+    victims: [Watermarked_WRN-28-10_TRADES]
+    attacks: [best]
+    pools: [cifar100]
+    budgets: [50000]
+    students: [resnet18_cifar]
+    seeds: [0, 1, 2]
+    defenses: [none, top1]
+    n_eval: [1000]

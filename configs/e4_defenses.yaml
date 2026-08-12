@@ -1,0 +1,22 @@
+# E4 - defenses (spec.md S11, S13.5)
+# 2 victims x 8 defenses x 3 seeds = 48 runs, plus the watermarked victim
+# across {none, top1} x 3 seeds = 6 runs (see scripts/train_watermark_victim.py;
+# that victim is only available once it has been trained).
+#
+# `prada` does not perturb outputs: it records the query index at which the KS
+# test on the query stream fires (results.extra.prada_detect_index). That index
+# is the defense's effective budget cap and is what the analysis uses.
+name: e4_defenses
+device: cuda
+epochs: 100
+
+blocks:
+  - name: defenses
+    victims: [Wang2023Better_WRN-70-16, Bartoldson2024Adversarial_WRN-94-16]
+    attacks: [best]
+    pools: [cifar100]
+    budgets: [50000]
+    students: [resnet18_cifar]
+    seeds: [0, 1, 2]
+    defenses: [none, top1, round_1, round_2, topk_2, mad_0.5, mad_0.99, prada]
+    n_eval: [1000]

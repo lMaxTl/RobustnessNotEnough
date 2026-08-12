@@ -1,0 +1,18 @@
+# E3 - boundary geometry (spec.md S10, S13.4)
+# All 8 victims, 2,000 test images each, FAB-T with 3 restarts and 100 iters.
+# No sweep. Writes results/margins.jsonl (D3).
+name: e3_margins
+mode: margins
+device: cuda
+
+blocks:
+  - name: margins
+    mode: margins
+    victims: all
+    n_images: 2000
+    fab_n_restarts: 3
+    fab_n_iter: 100
+    batch_size: 64
+    # unused by this mode, present so the config loader stays uniform
+    budgets: [0]
+    seeds: [0]

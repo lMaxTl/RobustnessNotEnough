@@ -1,0 +1,37 @@
+# E2b - ablations at Q = 50,000, seed 0 only (spec.md S13.2)
+# The cifar10_train pool is an upper bound, not a headline result (pitfall 7):
+# analysis keeps it in its own series and never averages it with the others.
+name: e2b_ablations
+device: cuda
+epochs: 100
+
+blocks:
+  - name: attack_ablation
+    victims: all
+    attacks: [jbda, noise]
+    pools: [cifar100]
+    budgets: [50000]
+    students: [resnet18_cifar]
+    seeds: [0]
+    defenses: [none]
+    n_eval: [1000]
+
+  - name: pool_ablation
+    victims: [Standard, Wang2023Better_WRN-70-16, Bartoldson2024Adversarial_WRN-94-16]
+    attacks: [best]
+    pools: [tinyimagenet, cifar10_train, uniform_noise]
+    budgets: [50000]
+    students: [resnet18_cifar]
+    seeds: [0]
+    defenses: [none]
+    n_eval: [1000]
+
+  - name: capacity_ablation
+    victims: [Standard, Bartoldson2024Adversarial_WRN-94-16]
+    attacks: [best]
+    pools: [cifar100]
+    budgets: [50000]
+    students: [wrn_16_4, wrn_28_10]
+    seeds: [0]
+    defenses: [none]
+    n_eval: [1000]
