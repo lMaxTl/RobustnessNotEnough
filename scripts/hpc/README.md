@@ -176,6 +176,19 @@ If it somehow persists, something is putting a cuDNN ahead of the venv's:
 submitting. Nothing in this project needs a module — `python3.11` is a system
 binary and the torch wheels are self-contained.
 
+**`ModuleNotFoundError: No module named 'pkg_resources'` when importing robustbench**
+
+Current setuptools no longer ships `pkg_resources`, and `robustbench/loaders.py`
+imports it at module level — for `make_custom_dataset`, an ImageNet-only helper
+this CIFAR-10 project never calls, but a module-level import breaks
+`import robustbench` regardless. `00_setup_env.sh` therefore pins
+`setuptools==78.1.0`, the version REPRO.md's reference environment runs, instead
+of upgrading it. If something later bumps setuptools again:
+
+```bash
+source .venv-horeka/bin/activate && pip install "setuptools==78.1.0"
+```
+
 ## HoreKa specifics worth knowing
 
 - `--account` is not set in the scripts; pass `RE_ACCOUNT=<project>` to

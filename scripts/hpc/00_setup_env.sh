@@ -25,7 +25,13 @@ echo "== creating $VENV with $($PY --version)"
 "$PY" -m venv "$VENV"
 # shellcheck disable=SC1091
 source "$VENV/bin/activate"
-python -m pip install --upgrade pip wheel setuptools
+python -m pip install --upgrade pip wheel
+# setuptools is pinned rather than upgraded. robustbench imports pkg_resources
+# at module level (robustbench/loaders.py, for an ImageNet-only helper file this
+# project never loads), and current setuptools no longer ships pkg_resources, so
+# `import robustbench` fails outright with an --upgrade'd setuptools. 78.1.0 is
+# the version REPRO.md's reference environment runs.
+python -m pip install "setuptools==78.1.0"
 
 # torch first and explicitly, so the CUDA build is a decision and not whatever
 # the dependency resolver happens to pick (REPRO.md records torch 2.13.0+cu126).
@@ -53,6 +59,13 @@ python -m src.repro | tee "$REPO/results/environment_horeka.txt"
 echo
 echo "== REPRO.md S2 gate: do all eight victim keys resolve?"
 python - <<'PY'
+try:
+    import pkg_resources  # noqa: F401  - robustbench imports it at module level
+except ModuleNotFoundError:
+    raise SystemExit(
+        "setuptools no longer provides pkg_resources, which robustbench imports.\n"
+        "Something upgraded setuptools past the pin. Fix with:\n"
+        "    pip install 'setuptools==78.1.0'")
 from robustbench.model_zoo.cifar10 import linf
 from src.victims import VICTIMS
 missing = [k for k in VICTIMS if k not in linf]
