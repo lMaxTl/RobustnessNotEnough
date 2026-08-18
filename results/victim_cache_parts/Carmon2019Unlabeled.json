@@ -1,0 +1,10 @@
+{
+  "Carmon2019Unlabeled": {
+    "aa_acc": 0.5955,
+    "clean_acc": 0.8969,
+    "fwd_flops": 10486657536,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 38119866
+  }
+}

@@ -16,3 +16,5 @@ results/students/
 results/aa_logs/
 .pytest_cache/
 .ruff_cache/
+
+logs/*

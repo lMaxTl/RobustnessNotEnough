@@ -1,0 +1,10 @@
+{
+  "Bartoldson2024Adversarial_WRN-82-8": {
+    "aa_acc": 0.7159,
+    "clean_acc": 0.9311,
+    "fwd_flops": 23027623936,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 79125466
+  }
+}

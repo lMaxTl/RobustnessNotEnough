@@ -1,0 +1,74 @@
+{
+  "Bartoldson2024Adversarial_WRN-82-8": {
+    "aa_acc": 0.7159,
+    "clean_acc": 0.9311,
+    "fwd_flops": 23027623936,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 79125466
+  },
+  "Bartoldson2024Adversarial_WRN-94-16": {
+    "aa_acc": 0.7369,
+    "clean_acc": 0.9368,
+    "fwd_flops": 106519449600,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 365915610
+  },
+  "Carmon2019Unlabeled": {
+    "aa_acc": 0.5955,
+    "clean_acc": 0.8969,
+    "fwd_flops": 10486657536,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 38119866
+  },
+  "Gowal2021Improving_28_10_ddpm_100m": {
+    "aa_acc": 0.6345,
+    "clean_acc": 0.875,
+    "fwd_flops": 10486657536,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 36479194
+  },
+  "Peng2023Robust": {
+    "aa_acc": 0.7106,
+    "clean_acc": 0.9327,
+    "fwd_flops": 120935075328,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 267240802
+  },
+  "Standard": {
+    "aa_acc": 0.0,
+    "clean_acc": 0.9477,
+    "fwd_flops": 10486657536,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 36479194
+  },
+  "Wang2023Better_WRN-28-10": {
+    "aa_acc": 0.673,
+    "clean_acc": 0.9244,
+    "fwd_flops": 10486657536,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 36479194
+  },
+  "Wang2023Better_WRN-70-16": {
+    "aa_acc": 0.7073,
+    "clean_acc": 0.9325,
+    "fwd_flops": 77528420352,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 266796506
+  },
+  "Watermarked_WRN-28-10_TRADES": {
+    "aa_acc": 0.4869,
+    "clean_acc": 0.8654,
+    "fwd_flops": 10486657536,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 36479194
+  }
+}

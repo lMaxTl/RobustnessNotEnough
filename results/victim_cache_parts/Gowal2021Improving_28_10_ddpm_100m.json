@@ -1,0 +1,10 @@
+{
+  "Gowal2021Improving_28_10_ddpm_100m": {
+    "aa_acc": 0.6345,
+    "clean_acc": 0.875,
+    "fwd_flops": 10486657536,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 36479194
+  }
+}

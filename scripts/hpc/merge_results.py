@@ -42,9 +42,15 @@ def short(p: Path) -> str:
 
 
 def result_key(r: dict) -> tuple:
-    name = (r.get("extra") or {}).get("matched_victim") or r["victim_name"]
-    return (name, r["attack"], r["pool"], r["n_queries_nominal"], r["student_arch"],
-            r["seed"], r["defense"], r["epochs"], r["n_eval"])
+    # `matched_victim` (set on S9.4 temperature-control records, naming the
+    # robust victim they're compared against) must never replace victim_name:
+    # a control's grid point is identical to that victim's real E2/E4 cell
+    # (same attack/pool/budget/seed), so substituting the name collides two
+    # different experiments onto one key and silently drops one. Carry it as
+    # an extra field instead, so it can only widen the key, never narrow it.
+    matched = (r.get("extra") or {}).get("matched_victim")
+    return (r["victim_name"], matched, r["attack"], r["pool"], r["n_queries_nominal"],
+            r["student_arch"], r["seed"], r["defense"], r["epochs"], r["n_eval"])
 
 
 def merge(paths: list[Path], out: Path, key_fn, check: bool) -> int:

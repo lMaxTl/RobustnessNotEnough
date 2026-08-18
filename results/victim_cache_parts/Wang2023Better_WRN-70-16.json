@@ -1,0 +1,10 @@
+{
+  "Wang2023Better_WRN-70-16": {
+    "aa_acc": 0.7073,
+    "clean_acc": 0.9325,
+    "fwd_flops": 77528420352,
+    "n_clean_eval": 10000,
+    "n_eval_aa": 10000,
+    "n_params": 266796506
+  }
+}

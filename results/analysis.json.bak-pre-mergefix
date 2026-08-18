@@ -1,0 +1,886 @@
+{
+  "n_eval": 10000,
+  "n_runs": 48,
+  "attacks": {
+    "random": {
+      "tau_fit_per_budget": {
+        "200000": {
+          "slope": -0.9575771872122254,
+          "intercept": 0.865374680054386,
+          "slope_ci95": [
+            -1.2748968414439128,
+            0.4441846947489874
+          ],
+          "intercept_ci95": [
+            -0.13149022915555,
+            1.0904477750671684
+          ],
+          "n_victims": 7,
+          "victims": [
+            "Bartoldson2024Adversarial_WRN-82-8",
+            "Bartoldson2024Adversarial_WRN-94-16",
+            "Carmon2019Unlabeled",
+            "Gowal2021Improving_28_10_ddpm_100m",
+            "Peng2023Robust",
+            "Wang2023Better_WRN-28-10",
+            "Wang2023Better_WRN-70-16"
+          ],
+          "r_range": [
+            0.5955,
+            0.7369
+          ],
+          "attack": "random",
+          "budget": 200000,
+          "n_boot": 9999,
+          "slope_ci_excludes_zero": false
+        }
+      },
+      "attacker_cost_fit": {
+        "slope_log10_per_R": 0.7669805234020757,
+        "intercept_log10": 16.35973707666497,
+        "flat_mean_log10": 16.882784923031327,
+        "n_victims": 7,
+        "victims": [
+          "Bartoldson2024Adversarial_WRN-82-8",
+          "Bartoldson2024Adversarial_WRN-94-16",
+          "Carmon2019Unlabeled",
+          "Gowal2021Improving_28_10_ddpm_100m",
+          "Peng2023Robust",
+          "Wang2023Better_WRN-28-10",
+          "Wang2023Better_WRN-70-16"
+        ],
+        "spread_log10": 0.12109323050831122
+      },
+      "leverage_table": {
+        "attack": "random",
+        "budget": 200000,
+        "measured_R_range": [
+          0.5955,
+          0.7369
+        ],
+        "mode": "direct",
+        "note": "Measured victim AutoAttack range is [0.596, 0.737]. Targets outside this range are extrapolations of the fitted tau(R_v) and are shaded in every figure (spec.md S14.3).",
+        "tau_fit": {
+          "slope": -0.9575771872122254,
+          "intercept": 0.865374680054386,
+          "slope_ci95": [
+            -1.2748968414439128,
+            0.4441846947489874
+          ],
+          "intercept_ci95": [
+            -0.13149022915555,
+            1.0904477750671684
+          ],
+          "n_victims": 7,
+          "victims": [
+            "Bartoldson2024Adversarial_WRN-82-8",
+            "Bartoldson2024Adversarial_WRN-94-16",
+            "Carmon2019Unlabeled",
+            "Gowal2021Improving_28_10_ddpm_100m",
+            "Peng2023Robust",
+            "Wang2023Better_WRN-28-10",
+            "Wang2023Better_WRN-70-16"
+          ],
+          "r_range": [
+            0.5955,
+            0.7369
+          ],
+          "attack": "random",
+          "budget": 200000,
+          "n_boot": 9999,
+          "slope_ci_excludes_zero": false
+        },
+        "attacker_cost_fit": {
+          "slope_log10_per_R": 0.7669805234020757,
+          "intercept_log10": 16.35973707666497,
+          "flat_mean_log10": 16.882784923031327,
+          "n_victims": 7,
+          "victims": [
+            "Bartoldson2024Adversarial_WRN-82-8",
+            "Bartoldson2024Adversarial_WRN-94-16",
+            "Carmon2019Unlabeled",
+            "Gowal2021Improving_28_10_ddpm_100m",
+            "Peng2023Robust",
+            "Wang2023Better_WRN-28-10",
+            "Wang2023Better_WRN-70-16"
+          ],
+          "spread_log10": 0.12109323050831122
+        },
+        "rows": [
+          {
+            "R_target": 0.737,
+            "mode": "direct",
+            "R_v_required": 0.737,
+            "c_def": 8.252924468548792e+19,
+            "c_att": 8.413984786256907e+16,
+            "leverage": 980.8580212824742,
+            "log10_leverage": 2.991606148016011,
+            "tau_at_R_v": 0.15964029307897587,
+            "student_aa_obtained": 0.11765489599920521,
+            "extrapolated": true,
+            "matched": {
+              "error": "no real R_v reaches tau*R_v = 0.737"
+            },
+            "log10_leverage_ci95": [
+              2.9453805899337837,
+              3.0475881962128204
+            ]
+          },
+          {
+            "R_target": 0.8,
+            "mode": "direct",
+            "R_v_required": 0.8,
+            "c_def": 5.71333823512109e+21,
+            "c_att": 9.404192175431746e+16,
+            "leverage": 60753.0995596524,
+            "log10_leverage": 4.783568440086217,
+            "tau_at_R_v": 0.09931293028460564,
+            "student_aa_obtained": 0.07945034422768452,
+            "extrapolated": true,
+            "matched": {
+              "error": "no real R_v reaches tau*R_v = 0.8"
+            },
+            "log10_leverage_ci95": [
+              4.6898589401696285,
+              4.871839385031006
+            ]
+          },
+          {
+            "R_target": 0.85,
+            "mode": "direct",
+            "R_v_required": 0.85,
+            "c_def": 2.561047485106238e+24,
+            "c_att": 1.0272366871138629e+17,
+            "leverage": 24931425.417658996,
+            "log10_leverage": 7.396747109363248,
+            "tau_at_R_v": 0.051434070923994435,
+            "student_aa_obtained": 0.04371896028539527,
+            "extrapolated": true,
+            "matched": {
+              "error": "no real R_v reaches tau*R_v = 0.85"
+            },
+            "log10_leverage_ci95": [
+              7.259495032637017,
+              7.511329435584996
+            ]
+          },
+          {
+            "R_target": 0.88,
+            "mode": "direct",
+            "R_v_required": 0.88,
+            "c_def": 1.1894394644460697e+28,
+            "c_att": 1.0831283848471032e+17,
+            "leverage": 109815187293.23796,
+            "log10_leverage": 11.04066240661257,
+            "tau_at_R_v": 0.02270675530762767,
+            "student_aa_obtained": 0.019981944670712348,
+            "extrapolated": true,
+            "matched": {
+              "error": "no real R_v reaches tau*R_v = 0.88"
+            },
+            "log10_leverage_ci95": [
+              10.876943848874134,
+              11.173953703705328
+            ]
+          }
+        ]
+      },
+      "falsification": {
+        "F1": {
+          "slope": -0.9575771872122254,
+          "ci95": [
+            -1.2748968414439128,
+            0.4441846947489874
+          ],
+          "triggered": false,
+          "meaning": "tau decreases significantly in R_v: robustness is partially self-protecting (F1)"
+        },
+        "F2": {
+          "triggered": null,
+          "meaning": "temperature-matched Standard reaches comparable student AA (F2)"
+        },
+        "F3": {
+          "defender_log10_slope_per_R": 16.50020333949114,
+          "attacker_log10_slope_per_R": 0.7669805234020757,
+          "ratio": 0.04648309524564496,
+          "triggered": false,
+          "meaning": "attacker cost grows at a rate comparable to the defender curve (F3): no divergence in leverage"
+        },
+        "verdict": "not falsified"
+      }
+    },
+    "best": {
+      "tau_fit_per_budget": {
+        "200000": {
+          "slope": 0.3128310497512721,
+          "intercept": -0.01634128070329338,
+          "slope_ci95": [
+            -0.8475884194341562,
+            0.603061846395773
+          ],
+          "intercept_ci95": [
+            -0.20735730759745385,
+            0.8072979371884672
+          ],
+          "n_victims": 7,
+          "victims": [
+            "Bartoldson2024Adversarial_WRN-82-8",
+            "Bartoldson2024Adversarial_WRN-94-16",
+            "Carmon2019Unlabeled",
+            "Gowal2021Improving_28_10_ddpm_100m",
+            "Peng2023Robust",
+            "Wang2023Better_WRN-28-10",
+            "Wang2023Better_WRN-70-16"
+          ],
+          "r_range": [
+            0.5955,
+            0.7369
+          ],
+          "attack": "best",
+          "budget": 200000,
+          "n_boot": 9999,
+          "slope_ci_excludes_zero": false
+        }
+      },
+      "attacker_cost_fit": {
+        "slope_log10_per_R": 0.5832446080086204,
+        "intercept_log10": 16.60559816932869,
+        "flat_mean_log10": 17.003345995793087,
+        "n_victims": 7,
+        "victims": [
+          "Bartoldson2024Adversarial_WRN-82-8",
+          "Bartoldson2024Adversarial_WRN-94-16",
+          "Carmon2019Unlabeled",
+          "Gowal2021Improving_28_10_ddpm_100m",
+          "Peng2023Robust",
+          "Wang2023Better_WRN-28-10",
+          "Wang2023Better_WRN-70-16"
+        ],
+        "spread_log10": 0.09255634401349155
+      },
+      "leverage_table": {
+        "attack": "best",
+        "budget": 200000,
+        "measured_R_range": [
+          0.5955,
+          0.7369
+        ],
+        "mode": "direct",
+        "note": "Measured victim AutoAttack range is [0.596, 0.737]. Targets outside this range are extrapolations of the fitted tau(R_v) and are shaded in every figure (spec.md S14.3).",
+        "tau_fit": {
+          "slope": 0.3128310497512721,
+          "intercept": -0.01634128070329338,
+          "slope_ci95": [
+            -0.8475884194341562,
+            0.603061846395773
+          ],
+          "intercept_ci95": [
+            -0.20735730759745385,
+            0.8072979371884672
+          ],
+          "n_victims": 7,
+          "victims": [
+            "Bartoldson2024Adversarial_WRN-82-8",
+            "Bartoldson2024Adversarial_WRN-94-16",
+            "Carmon2019Unlabeled",
+            "Gowal2021Improving_28_10_ddpm_100m",
+            "Peng2023Robust",
+            "Wang2023Better_WRN-28-10",
+            "Wang2023Better_WRN-70-16"
+          ],
+          "r_range": [
+            0.5955,
+            0.7369
+          ],
+          "attack": "best",
+          "budget": 200000,
+          "n_boot": 9999,
+          "slope_ci_excludes_zero": false
+        },
+        "attacker_cost_fit": {
+          "slope_log10_per_R": 0.5832446080086204,
+          "intercept_log10": 16.60559816932869,
+          "flat_mean_log10": 17.003345995793087,
+          "n_victims": 7,
+          "victims": [
+            "Bartoldson2024Adversarial_WRN-82-8",
+            "Bartoldson2024Adversarial_WRN-94-16",
+            "Carmon2019Unlabeled",
+            "Gowal2021Improving_28_10_ddpm_100m",
+            "Peng2023Robust",
+            "Wang2023Better_WRN-28-10",
+            "Wang2023Better_WRN-70-16"
+          ],
+          "spread_log10": 0.09255634401349155
+        },
+        "rows": [
+          {
+            "R_target": 0.737,
+            "mode": "direct",
+            "R_v_required": 0.737,
+            "c_def": 8.252924468548792e+19,
+            "c_att": 1.085049235826121e+17,
+            "leverage": 760.6036847042508,
+            "log10_leverage": 2.881158424997267,
+            "tau_at_R_v": 0.21421520296339414,
+            "student_aa_obtained": 0.15787660458402147,
+            "extrapolated": true,
+            "matched": {
+              "error": "tau*R_v = 0.737 is unreachable for R_v in (0,1] under the fitted tau (slope=0.313, intercept=-0.016)"
+            },
+            "log10_leverage_ci95": [
+              2.845578420849801,
+              2.924082733115683
+            ]
+          },
+          {
+            "R_target": 0.8,
+            "mode": "direct",
+            "R_v_required": 0.8,
+            "c_def": 5.71333823512109e+21,
+            "c_att": 1.1808476121837875e+17,
+            "leverage": 48383.36611914886,
+            "log10_leverage": 4.684696079737261,
+            "tau_at_R_v": 0.23392355909772428,
+            "student_aa_obtained": 0.18713884727817942,
+            "extrapolated": true,
+            "matched": {
+              "error": "tau*R_v = 0.8 is unreachable for R_v in (0,1] under the fitted tau (slope=0.313, intercept=-0.016)"
+            },
+            "log10_leverage_ci95": [
+              4.612994476852641,
+              4.75231514515011
+            ]
+          },
+          {
+            "R_target": 0.85,
+            "mode": "direct",
+            "R_v_required": 0.85,
+            "c_def": 2.561047485106238e+24,
+            "c_att": 1.2628625547505552e+17,
+            "leverage": 20279700.870631203,
+            "log10_leverage": 7.307061544783964,
+            "tau_at_R_v": 0.24956511158528788,
+            "student_aa_obtained": 0.21213034484749468,
+            "extrapolated": true,
+            "matched": {
+              "error": "tau*R_v = 0.85 is unreachable for R_v in (0,1] under the fitted tau (slope=0.313, intercept=-0.016)"
+            },
+            "log10_leverage_ci95": [
+              7.202239256214502,
+              7.395526208489196
+            ]
+          },
+          {
+            "R_target": 0.88,
+            "mode": "direct",
+            "R_v_required": 0.88,
+            "c_def": 1.1894394644460697e+28,
+            "c_att": 1.3147810149670038e+17,
+            "leverage": 90466735593.67757,
+            "log10_leverage": 10.956488919495092,
+            "tau_at_R_v": 0.25895004307782604,
+            "student_aa_obtained": 0.22787603790848693,
+            "extrapolated": true,
+            "matched": {
+              "error": "tau*R_v = 0.88 is unreachable for R_v in (0,1] under the fitted tau (slope=0.313, intercept=-0.016)"
+            },
+            "log10_leverage_ci95": [
+              10.831219498305277,
+              11.058345055385248
+            ]
+          }
+        ]
+      },
+      "falsification": {
+        "F1": {
+          "slope": 0.3128310497512721,
+          "ci95": [
+            -0.8475884194341562,
+            0.603061846395773
+          ],
+          "triggered": false,
+          "meaning": "tau decreases significantly in R_v: robustness is partially self-protecting (F1)"
+        },
+        "F2": {
+          "triggered": false,
+          "meaning": "temperature-matched Standard reaches comparable student AA (F2)",
+          "control_student_aa_mean": 0.0,
+          "robust_student_aa_mean": 0.04255,
+          "n_control_runs": 12,
+          "n_robust_runs": 20
+        },
+        "F3": {
+          "defender_log10_slope_per_R": 16.50020333949114,
+          "attacker_log10_slope_per_R": 0.5832446080086204,
+          "ratio": 0.03534772244974088,
+          "triggered": false,
+          "meaning": "attacker cost grows at a rate comparable to the defender curve (F3): no divergence in leverage"
+        },
+        "verdict": "not falsified"
+      }
+    }
+  },
+  "margin_link": {
+    "n": 8,
+    "victims": [
+      "Bartoldson2024Adversarial_WRN-82-8",
+      "Bartoldson2024Adversarial_WRN-94-16",
+      "Carmon2019Unlabeled",
+      "Gowal2021Improving_28_10_ddpm_100m",
+      "Peng2023Robust",
+      "Standard",
+      "Wang2023Better_WRN-28-10",
+      "Wang2023Better_WRN-70-16"
+    ],
+    "spearman_rho": NaN,
+    "ci95": [
+      NaN,
+      NaN
+    ],
+    "ols_slope_log_q90_per_frac": -1.005728507268288e-14,
+    "note": "n <= 8 victims: underpowered by construction. Effect size and CI only; suggestive, not confirmatory (spec.md S10.4, pitfall 9).",
+    "q90": {
+      "Bartoldson2024Adversarial_WRN-82-8": 200000.0,
+      "Bartoldson2024Adversarial_WRN-94-16": 200000.0,
+      "Carmon2019Unlabeled": 200000.0,
+      "Gowal2021Improving_28_10_ddpm_100m": 200000.0,
+      "Peng2023Robust": 200000.0,
+      "Standard": 200000.0,
+      "Wang2023Better_WRN-28-10": 200000.0,
+      "Wang2023Better_WRN-70-16": 200000.0
+    },
+    "q90_censored": {
+      "Bartoldson2024Adversarial_WRN-82-8": true,
+      "Bartoldson2024Adversarial_WRN-94-16": true,
+      "Carmon2019Unlabeled": true,
+      "Gowal2021Improving_28_10_ddpm_100m": true,
+      "Peng2023Robust": true,
+      "Standard": true,
+      "Wang2023Better_WRN-28-10": true,
+      "Wang2023Better_WRN-70-16": true
+    }
+  },
+  "delta_abs": [
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-82-8",
+      "victim_aa_acc": 0.7159,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1417,
+      "delta_abs": 0.1417
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-82-8",
+      "victim_aa_acc": 0.7159,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1442,
+      "delta_abs": 0.1442
+    },
+    {
+      "victim_name": "Carmon2019Unlabeled",
+      "victim_aa_acc": 0.5955,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.0999,
+      "delta_abs": 0.0999
+    },
+    {
+      "victim_name": "Carmon2019Unlabeled",
+      "victim_aa_acc": 0.5955,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.0994,
+      "delta_abs": 0.0994
+    },
+    {
+      "victim_name": "Carmon2019Unlabeled",
+      "victim_aa_acc": 0.5955,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.0995,
+      "delta_abs": 0.0995
+    },
+    {
+      "victim_name": "Carmon2019Unlabeled",
+      "victim_aa_acc": 0.5955,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1,
+      "delta_abs": 0.1
+    },
+    {
+      "victim_name": "Carmon2019Unlabeled",
+      "victim_aa_acc": 0.5955,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.099,
+      "delta_abs": 0.099
+    },
+    {
+      "victim_name": "Carmon2019Unlabeled",
+      "victim_aa_acc": 0.5955,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.057,
+      "delta_abs": 0.057
+    },
+    {
+      "victim_name": "Gowal2021Improving_28_10_ddpm_100m",
+      "victim_aa_acc": 0.6345,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.0837,
+      "delta_abs": 0.0837
+    },
+    {
+      "victim_name": "Gowal2021Improving_28_10_ddpm_100m",
+      "victim_aa_acc": 0.6345,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.0007,
+      "delta_abs": 0.0007
+    },
+    {
+      "victim_name": "Gowal2021Improving_28_10_ddpm_100m",
+      "victim_aa_acc": 0.6345,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1,
+      "delta_abs": 0.1
+    },
+    {
+      "victim_name": "Gowal2021Improving_28_10_ddpm_100m",
+      "victim_aa_acc": 0.6345,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.0104,
+      "delta_abs": 0.0104
+    },
+    {
+      "victim_name": "Gowal2021Improving_28_10_ddpm_100m",
+      "victim_aa_acc": 0.6345,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1,
+      "delta_abs": 0.1
+    },
+    {
+      "victim_name": "Gowal2021Improving_28_10_ddpm_100m",
+      "victim_aa_acc": 0.6345,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1,
+      "delta_abs": 0.1
+    },
+    {
+      "victim_name": "Peng2023Robust",
+      "victim_aa_acc": 0.7106,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1348,
+      "delta_abs": 0.1348
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-28-10",
+      "victim_aa_acc": 0.673,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1504,
+      "delta_abs": 0.1504
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-28-10",
+      "victim_aa_acc": 0.673,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.157,
+      "delta_abs": 0.157
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-28-10",
+      "victim_aa_acc": 0.673,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1622,
+      "delta_abs": 0.1622
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-28-10",
+      "victim_aa_acc": 0.673,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1523,
+      "delta_abs": 0.1523
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-28-10",
+      "victim_aa_acc": 0.673,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1606,
+      "delta_abs": 0.1606
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-28-10",
+      "victim_aa_acc": 0.673,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1622,
+      "delta_abs": 0.1622
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-70-16",
+      "victim_aa_acc": 0.7073,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1489,
+      "delta_abs": 0.1489
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-70-16",
+      "victim_aa_acc": 0.7073,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1485,
+      "delta_abs": 0.1485
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-70-16",
+      "victim_aa_acc": 0.7073,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1481,
+      "delta_abs": 0.1481
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-70-16",
+      "victim_aa_acc": 0.7073,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1297,
+      "delta_abs": 0.1297
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-82-8",
+      "victim_aa_acc": 0.7159,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1303,
+      "delta_abs": 0.1303
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-82-8",
+      "victim_aa_acc": 0.7159,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1218,
+      "delta_abs": 0.1218
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-82-8",
+      "victim_aa_acc": 0.7159,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1548,
+      "delta_abs": 0.1548
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-82-8",
+      "victim_aa_acc": 0.7159,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1272,
+      "delta_abs": 0.1272
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-94-16",
+      "victim_aa_acc": 0.7369,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1379,
+      "delta_abs": 0.1379
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-94-16",
+      "victim_aa_acc": 0.7369,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1193,
+      "delta_abs": 0.1193
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-94-16",
+      "victim_aa_acc": 0.7369,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1384,
+      "delta_abs": 0.1384
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-94-16",
+      "victim_aa_acc": 0.7369,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1087,
+      "delta_abs": 0.1087
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-94-16",
+      "victim_aa_acc": 0.7369,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1242,
+      "delta_abs": 0.1242
+    },
+    {
+      "victim_name": "Bartoldson2024Adversarial_WRN-94-16",
+      "victim_aa_acc": 0.7369,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1123,
+      "delta_abs": 0.1123
+    },
+    {
+      "victim_name": "Peng2023Robust",
+      "victim_aa_acc": 0.7106,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1331,
+      "delta_abs": 0.1331
+    },
+    {
+      "victim_name": "Peng2023Robust",
+      "victim_aa_acc": 0.7106,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1373,
+      "delta_abs": 0.1373
+    },
+    {
+      "victim_name": "Peng2023Robust",
+      "victim_aa_acc": 0.7106,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.127,
+      "delta_abs": 0.127
+    },
+    {
+      "victim_name": "Peng2023Robust",
+      "victim_aa_acc": 0.7106,
+      "attack": "best",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1485,
+      "delta_abs": 0.1485
+    },
+    {
+      "victim_name": "Peng2023Robust",
+      "victim_aa_acc": 0.7106,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 0,
+      "student_aa_acc": 0.1346,
+      "delta_abs": 0.1346
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-70-16",
+      "victim_aa_acc": 0.7073,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 1,
+      "student_aa_acc": 0.1341,
+      "delta_abs": 0.1341
+    },
+    {
+      "victim_name": "Wang2023Better_WRN-70-16",
+      "victim_aa_acc": 0.7073,
+      "attack": "random",
+      "pool": "cifar100",
+      "n_queries": 200000,
+      "seed": 2,
+      "student_aa_acc": 0.1407,
+      "delta_abs": 0.1407
+    }
+  ]
+}
