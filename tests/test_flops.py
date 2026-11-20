@@ -121,3 +121,24 @@ def test_synthesis_cost_is_linear_in_steps(student):
     a = fl.synthesis_cost(student, n_samples=1000, n_steps=1)
     b = fl.synthesis_cost(student, n_samples=1000, n_steps=10)
     assert b == pytest.approx(10 * a, rel=1e-6)
+
+
+def test_cost_measurement_never_touches_the_model():
+    """Regression: FLOP counting once ran a real lr=0.1 SGD step on noise *on the
+    trained student itself*, in train mode, right before it was evaluated. Every
+    weight and every BatchNorm running statistic must be bit-identical after any
+    cost call, and the model must stay in the mode it was handed over in."""
+    m = build_student("resnet18_cifar", 0).eval()
+    before = {k: v.clone() for k, v in m.state_dict().items()}
+    victim = build_student("resnet18_cifar", 1)
+
+    fl.measure_train_step_flops(m, batch_size=4)
+    fl.measure_train_flops_per_sample(m, batch_size=4)
+    fl.attack_cost(victim, m, n_queries=100, n_epochs=2, student_batch_size=4)
+    fl.synthesis_cost(m, n_samples=100, n_steps=3, student_batch_size=4)
+    fl.measure_forward_flops(m)
+
+    assert not m.training
+    after = m.state_dict()
+    changed = [k for k in before if not torch.equal(before[k], after[k])]
+    assert not changed, f"cost measurement modified the model: {changed[:5]}"

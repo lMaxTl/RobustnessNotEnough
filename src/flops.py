@@ -12,6 +12,7 @@ Never present a comparison built from two conventions without saying so.
 
 from __future__ import annotations
 
+import copy
 from typing import Any
 
 import torch
@@ -76,7 +77,14 @@ def measure_train_step_flops(model: nn.Module, batch_size: int,
     Uses a genuine SGD(momentum, nesterov, weight_decay) step matching the
     student recipe in spec.md S8.3, so the backward-pass cost is measured
     rather than assumed to be 2x forward.
+
+    The step runs on a deep copy. It is a genuine lr=0.1 update on Gaussian
+    noise with random targets, and it updates BatchNorm running statistics, so
+    running it on the caller's model silently wrecks a trained student. Every
+    extraction recorded before this copy was added was evaluated after one such
+    step (two for attacks that also call `synthesis_cost`).
     """
+    model = copy.deepcopy(model)
     was_training = model.training
     model.train()
     device = _device_of(model)
