@@ -1,0 +1,23 @@
+# E0 - sanity gate for the extraction pipeline. Run this before any sweep.
+#
+# A working pipeline must recover most of the non-robust `Standard` victim with
+# plain KnockoffNets-style extraction. Every record produced before the FLOP
+# measurement fix failed this (student at chance, 8-37% clean accuracy), and
+# nothing downstream noticed. scripts/check_sanity.py turns that into a hard
+# failure.
+#
+# 2 victims x {random, best} x Q=50k x 1 seed = 4 runs, ~1.5 GPU-hours.
+name: e0_sanity
+device: cuda
+epochs: 100
+
+blocks:
+  - name: sanity
+    victims: [Standard, Wang2023Better_WRN-28-10]
+    attacks: [random, best]
+    pools: [cifar100]
+    budgets: [50000]
+    students: [resnet18_cifar]
+    seeds: [0]
+    defenses: [none]
+    n_eval: [1000]
